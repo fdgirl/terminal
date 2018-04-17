@@ -14,7 +14,7 @@ public class Gps0004 {
 	
 	public Gps0004(String string) {
 		this.data = string;
-		if(string.length()>14)
+		if(string.length()>28)
 			this.message = FormatUtils.strToByte(string);			
 	}
 	

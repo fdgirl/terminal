@@ -1,5 +1,8 @@
 package com.zim.terminal.utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class FormatUtils {
 
     /*
@@ -64,6 +67,37 @@ public class FormatUtils {
 	public static int getBinIndex(int number,int index){
 		return (number & (0x1 << index)) >> index;
 	}
+	
+	/**
+	 * byte数组相连
+	 */
+	public static byte[] bytesConcat  (byte[]a,byte[]b){ 
+		if (a == null) return b; 
+		if (b == null) return a; 
+		byte[] r = new byte[a.length+b.length]; 
+		System.arraycopy(a, 0, r, 0, a.length); 
+		System.arraycopy(b, 0, r, a.length, b.length); 
+		return r; 		     
+	}
+	
+    /**
+     * 将Date类型按pattern指定的格式转换为字符串
+     */
+    public static String date2Str(Date date, String pattern) {
+        SimpleDateFormat sdFormat = new SimpleDateFormat(pattern);
+        return sdFormat.format(date);
+    }
+
+    /**
+     * 获取流水号
+     */
+    public static byte getSN() {
+        Date date = new Date();
+        String pattern = "SSSS";
+        String ss = date2Str(date, pattern);
+        return Byte.parseByte(ss.substring(pattern.length() > 2 ? (pattern.length() - 2) : 0));
+    }
+    
     public static void main(String[] args) {
     	byte[] tid = new byte[]{(byte) 0xff, (byte) 0x0f, (byte) 0xff,
                 (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff,

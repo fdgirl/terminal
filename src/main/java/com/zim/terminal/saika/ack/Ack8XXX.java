@@ -1,45 +1,178 @@
 package com.zim.terminal.saika.ack;
 
+import java.io.UnsupportedEncodingException;
+
+import com.zim.terminal.utils.FormatUtils;
+
 public class Ack8XXX {
 	
 	public static String ack8001(String terminal,boolean bool) {
-		StringBuffer tsb = new StringBuffer("AA");
-		tsb.append(terminal.substring(2, 22));
-		tsb.append("8001");
-
-		switch (Integer.parseInt(terminal.substring(28,32),16)) {
-		case 0x01:
-			tsb.append("0001");
-			break;
-		case 0x03:
-			tsb.append("0003");
-			break;
-		case 0x04:
-			tsb.append("0004");
-			break;
-			
-		default:
-			break;
-		}
-		
-		tsb.append(terminal.substring(22,24));
-		
+		byte[] _terminal = FormatUtils.strToByte(terminal.substring(2, 22));
+		byte sn = FormatUtils.getSN();
+        byte[] cmd = new byte[]{(byte) 0x80, 0x01};
+        byte[] requestCmd = FormatUtils.strToByte(terminal.substring(28,32));
+        byte requestSn = (byte)Integer.parseInt(terminal.substring(22,24),16);
+        
+        byte[] body;
 		if(bool) {
-			tsb.append("00");
+			body = FormatUtils.bytesConcat(FormatUtils.bytesConcat(cmd,requestCmd),new byte[] {requestSn,(byte)0x00});
 		}else {
-			tsb.append("01");
+			body = FormatUtils.bytesConcat(FormatUtils.bytesConcat(cmd,requestCmd),new byte[] {requestSn,(byte)0x01});
 		}
-		
-		tsb.append("AA");
-		
-		return tsb.toString();
+
+		int size = body.length;
+        byte[] _size;
+        if (size <= 0xff) {
+            _size = new byte[]{0x00, (byte) size};
+        } else {
+            _size = new byte[]{(byte) (size / 100), (byte) (size % 100)};
+        }
+        
+        byte[] _attribute = FormatUtils.bytesConcat(
+        		FormatUtils.bytesConcat(_terminal, new byte[]{sn}), _size);
+        byte[] _message = FormatUtils.bytesConcat(_attribute, body);
+        byte xy = FormatUtils.bytesOr(_message);
+        byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
+        byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
+        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+        return FormatUtils.byteToHexStr(res);
 	}
 	
-	public static void ack8006() {
+	public static String ack8006(String terminal) {
+		StringBuffer tsb = new StringBuffer(terminal);
+        while (tsb.length() < 20) {
+            tsb.insert(0, '0');
+        }
+        byte[] _terminal = FormatUtils.strToByte(tsb.toString());
+        byte sn = FormatUtils.getSN();
+        byte[] body = new byte[]{(byte) 0x80, 0x06};
+        int size = body.length;
+        byte[] _size;
+        if (size <= 0xff) {
+            _size = new byte[]{0x00, (byte) size};
+        } else {
+            _size = new byte[]{(byte) (size / 100), (byte) (size % 100)};
+        }
+        byte[] _attribute = FormatUtils.bytesConcat(
+        		FormatUtils.bytesConcat(_terminal, new byte[]{sn}), _size);
+        byte[] _message = FormatUtils.bytesConcat(_attribute, body);
+        byte xy = FormatUtils.bytesOr(_message);
+        byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
+        byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
+        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+        return FormatUtils.byteToHexStr(res);
+	}
+	
+	public static String ack8008(String terminal,String address) {
+		if(address == null || terminal == null) {
+			return null;
+		}
 		
+		StringBuffer tsb = new StringBuffer(terminal);
+        while (tsb.length() < 20) {
+            tsb.insert(0, '0');
+        }
+        byte[] _terminal = FormatUtils.strToByte(tsb.toString());
+        byte sn = FormatUtils.getSN();
+        byte[] cmd = new byte[]{(byte) 0x80, 0x08};
+        
+        byte[] byteAddress = null;
+        try {
+        	byteAddress = address.getBytes("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} 
+        
+        byte[] _addSize = {0x00};
+        if (byteAddress != null) {
+            int addSize = byteAddress.length;
+            _addSize = new byte[]{(byte) addSize};
+        }
+        byte[] allAddress = FormatUtils.bytesConcat(_addSize, byteAddress);
+        byte[] body = FormatUtils.bytesConcat(cmd, allAddress);
+        
+        int size = body.length;
+        byte[] _size;
+        if (size <= 0xff) {
+            _size = new byte[]{0x00, (byte) size};
+        } else {
+            _size = new byte[]{(byte) (size / 100), (byte) (size % 100)};
+        }
+        byte[] _attribute = FormatUtils.bytesConcat(
+        		FormatUtils.bytesConcat(_terminal, new byte[]{sn}), _size);
+        byte[] _message = FormatUtils.bytesConcat(_attribute, body);
+        byte xy = FormatUtils.bytesOr(_message);
+        byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
+        byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
+        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+        return FormatUtils.byteToHexStr(res);
+	}
+	
+	public static String ack8009(String terminal,boolean bool) {
+		StringBuffer tsb = new StringBuffer(terminal);
+        while (tsb.length() < 20) {
+            tsb.insert(0, '0');
+        }
+        byte[] _terminal = FormatUtils.strToByte(tsb.toString());
+        byte sn = FormatUtils.getSN();
+        
+        byte[] body;
+		if(bool) {
+			body = new byte[]{(byte) 0x80, 0x09,0x01};
+		}else {
+			body = new byte[]{(byte) 0x80, 0x09,0x00};
+		}
+        int size = body.length;
+        byte[] _size;
+        if (size <= 0xff) {
+            _size = new byte[]{0x00, (byte) size};
+        } else {
+            _size = new byte[]{(byte) (size / 100), (byte) (size % 100)};
+        }
+        byte[] _attribute = FormatUtils.bytesConcat(
+        		FormatUtils.bytesConcat(_terminal, new byte[]{sn}), _size);
+        byte[] _message = FormatUtils.bytesConcat(_attribute, body);
+        byte xy = FormatUtils.bytesOr(_message);
+        byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
+        byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
+        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+        return FormatUtils.byteToHexStr(res);
+	}
+	
+	public static String ack800A(String terminal,boolean bool) {
+		StringBuffer tsb = new StringBuffer(terminal);
+        while (tsb.length() < 20) {
+            tsb.insert(0, '0');
+        }
+        byte[] _terminal = FormatUtils.strToByte(tsb.toString());
+        byte sn = FormatUtils.getSN();
+        
+        byte[] body;
+		if(bool) {
+			body = new byte[]{(byte) 0x80, 0x0A,0x01};
+		}else {
+			body = new byte[]{(byte) 0x80, 0x0A,0x00};
+		}
+        int size = body.length;
+        byte[] _size;
+        if (size <= 0xff) {
+            _size = new byte[]{0x00, (byte) size};
+        } else {
+            _size = new byte[]{(byte) (size / 100), (byte) (size % 100)};
+        }
+        byte[] _attribute = FormatUtils.bytesConcat(
+        		FormatUtils.bytesConcat(_terminal, new byte[]{sn}), _size);
+        byte[] _message = FormatUtils.bytesConcat(_attribute, body);
+        byte xy = FormatUtils.bytesOr(_message);
+        byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
+        byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
+        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+        return FormatUtils.byteToHexStr(res);
 	}
 	public static void main(String[] args) {
-		String reString = ack8001("AA0000000B121171118001B60029000417111820335300001E091133011120230927607500000F000000000B000000000000000002291A04AA", true);
-		System.out.println(reString);
+//		String reString = ack8001("AA0000000B121171118001B60029000417111820335300001E091133011120230927607500000F000000000B000000000000000002291A04AA", true);
+//		System.out.println(reString);
+		String res = ack800A("0000000B121171118001",false);System.out.println(res);
 	}
 }

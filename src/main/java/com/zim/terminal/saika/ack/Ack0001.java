@@ -13,7 +13,8 @@ public class Ack0001 {
 	}
 	public Ack0001(String string) {
 		this.data = string;
-		this.message = FormatUtils.strToByte(string);
+		if(string.length()>28)
+			this.message = FormatUtils.strToByte(string);
 	}
 	
 	//设备ID 命令字 接收命令 流水 执行结果
