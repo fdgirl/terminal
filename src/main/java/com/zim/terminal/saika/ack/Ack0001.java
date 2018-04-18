@@ -18,7 +18,7 @@ public class Ack0001 {
 	}
 	
 	//设备ID 命令字 接收命令 流水 执行结果
-	public Map<String, Object> getHash() {
+	public Map<String, Object> analysis() {
 		if (message == null || data==null)
             return null;
 		int length = Integer.parseInt(data.substring(24,28),16);
@@ -68,7 +68,7 @@ public class Ack0001 {
 	
 	public static void main(String[] args) {
 		Ack0001 ask = new Ack0001("AA0000000B121171118001B60029000417111820335300001E091133011120230927607500000F000000000B000000000000000002291A04AA");
-		System.out.println(ask.getHash());
+		System.out.println(ask.analysis());
 		
 	}
 }

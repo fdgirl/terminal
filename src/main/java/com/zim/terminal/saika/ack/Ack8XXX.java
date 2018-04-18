@@ -202,20 +202,14 @@ public class Ack8XXX {
         return FormatUtils.byteToHexStr(res);
 	}
 	
-	public static String ack800D(String terminal,boolean bool) {
+	public static String ack800D(String terminal) {
 		StringBuffer tsb = new StringBuffer(terminal);
         while (tsb.length() < 20) {
             tsb.insert(0, '0');
         }
         byte[] _terminal = FormatUtils.strToByte(tsb.toString());
         byte sn = FormatUtils.getSN();
-        
-        byte[] body;
-		if(bool) {
-			body = new byte[]{(byte) 0x80, 0x0D,0x01};
-		}else {
-			body = new byte[]{(byte) 0x80, 0x0D,0x00};
-		}
+        byte[] body = new byte[]{(byte) 0x80, 0x0D};
         int size = body.length;
         byte[] _size;
         if (size <= 0xff) {

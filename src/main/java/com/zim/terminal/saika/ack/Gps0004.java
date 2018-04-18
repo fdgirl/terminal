@@ -18,7 +18,7 @@ public class Gps0004 {
 			this.message = FormatUtils.strToByte(string);			
 	}
 	
-	public Map<String, Object> Analysis() {
+	public Map<String, Object> analysis() {
 		if (message == null || data==null)
             return null;
 		int length = Integer.parseInt(data.substring(24,28),16);			
@@ -118,7 +118,7 @@ public class Gps0004 {
 	
 	public static void main(String[] args) {
 		Gps0004 ask = new Gps0004("AA0000000B121171118001B60029000417111820335300001E091133011120230927607500000F000000000B000000000000000002291A04AA");
-		System.out.println(ask.Analysis());
+		System.out.println(ask.analysis());
 		/*
 		 * 1511008433000
 		 * 1523785289236
