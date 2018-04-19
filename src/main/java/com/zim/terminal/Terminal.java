@@ -25,4 +25,5 @@ public interface Terminal {
 	public String photo(String terminal);
 	
 	public String rent(String terminal,int type);
+	
 }
