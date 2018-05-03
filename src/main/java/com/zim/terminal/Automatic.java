@@ -16,7 +16,7 @@ public class Automatic implements Terminal {
 	}
 	
 	public String sreverAck(String string, boolean bool) {
-		if(string.substring(2, 9).equals("0000000")) {
+		if(string.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack8001(string, bool);
 		}
 		return null;
@@ -24,7 +24,7 @@ public class Automatic implements Terminal {
 
 	@Override
 	public String heartBeat(String terminal) {
-		if(terminal.substring(2, 9).equals("0000000")) {
+		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack8006(terminal);
 		}
 		return null;
@@ -32,7 +32,7 @@ public class Automatic implements Terminal {
 
 	@Override
 	public String update(String terminal, String version) {
-		if(terminal.substring(2, 9).equals("0000000")) {
+		if(terminal.substring(0, 7).equals("0000000")) {
 			StringBuilder address = new StringBuilder("ftp:120.79.31.177,21,cheji,cheji,openatE");
 			address.append(version.replaceAll("\\.", "").replaceAll("V", "").replaceAll("v", ""));
 			address.append(".dll");
@@ -44,7 +44,7 @@ public class Automatic implements Terminal {
 
 	@Override
 	public String lock(String terminal, boolean bool) {
-		if(terminal.substring(2, 9).equals("0000000")) {
+		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack8009(terminal,bool);
 		}
 		return null;
@@ -52,7 +52,7 @@ public class Automatic implements Terminal {
 
 	@Override
 	public String ignite(String terminal, boolean bool) {
-		if(terminal.substring(2, 9).equals("0000000")) {
+		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800A(terminal,bool);
 		}
 		return null;
@@ -60,7 +60,7 @@ public class Automatic implements Terminal {
 
 	@Override
 	public String whistle(String terminal, boolean bool) {
-		if(terminal.substring(2, 9).equals("0000000")) {
+		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800C(terminal,bool);
 		}
 		return null;
@@ -68,7 +68,7 @@ public class Automatic implements Terminal {
 
 	@Override
 	public String initBluetooth(String terminal) {
-		if(terminal.substring(2, 9).equals("0000000")) {
+		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800D(terminal);
 		}
 		return null;
@@ -76,7 +76,7 @@ public class Automatic implements Terminal {
 
 	@Override
 	public String password(String terminal, String password) {
-		if(terminal.substring(2, 9).equals("0000000")) {
+		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800E(terminal,password);
 		}
 		return null;
@@ -84,7 +84,7 @@ public class Automatic implements Terminal {
 
 	@Override
 	public String photo(String terminal) {
-		if(terminal.substring(2, 9).equals("0000000")) {
+		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800F(terminal);
 		}
 		return null;
