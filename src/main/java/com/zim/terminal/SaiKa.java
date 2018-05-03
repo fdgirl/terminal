@@ -22,13 +22,14 @@ public class SaiKa implements Terminal {
 		switch (bytes[15]) {
 		case 0x01:
 			returnResult.setType("ACK");
-			
+			returnResult.setData(new Ack0001(bytes).analysis());
 			break;
 		case 0x03:
 			returnResult.setType("PHOTO");
 			break;
 		case 0x04:
 			returnResult.setType("GPS");
+			returnResult.setData(new Gps0004(bytes).analysis());
 			break;
 		default:
 			break;
@@ -81,12 +82,14 @@ public class SaiKa implements Terminal {
 		return Ack8XXX.ack8010(terminal, type);
 	}
 	public static void main(String[] args) {
-		Terminal terminal = new SaiKa();
+		/*Terminal terminal = new SaiKa();
 		String base= "qgAAAAsSEAAAAAF8ACkABBgFAhVVIwAFHg0RQmARIDgBAYGXAAANAAAAAAwAAAAAAAAAAAEUDgWq";
     	byte[] analysis = null;
 		analysis = decoder.decode(base);
 		Analysis<Object> res = terminal.anlysis(analysis);
 		System.out.println(res.getType());
+		GpsInfo data = (GpsInfo) res.getData();
+		System.out.println(data.getObd_stagus());*/
 //		Photo data = (Photo) res.getData();
 //		System.out.println(data.getSize());
 		/*Map<String, Object> res = terminal.anlysis();

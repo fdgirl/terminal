@@ -9,9 +9,11 @@ public class GpsInfo {
      */
     private String equipment_id;
     /**
-     * 车辆唯一标识（车架号）
+     * 消息流水
      */
-    private String car_unique_id;
+    private int message_sn;
+    private int lenght;
+    private int type;
     /**
      * 终端数据时间，单位：毫秒
      */
@@ -125,6 +127,10 @@ public class GpsInfo {
      */
     private int ready_status;
     /**
+     * 0 为分时用车， 1 为长租用车
+     */
+    private int long_term_lease;
+    /**
      * 报警标志4，预留
      */
     private int alarm_status_4;
@@ -184,364 +190,379 @@ public class GpsInfo {
      * ACC状态：1为AccOn 0为AccOff
      */
     private int acc_status;
-
-    public String getEquipment_id() {
-        return equipment_id;
-    }
-
-    public void setEquipment_id(String equipment_id) {
-        this.equipment_id = equipment_id;
-    }
-
-    public String getCar_unique_id() {
-        return car_unique_id;
-    }
-
-    public void setCar_unique_id(String car_unique_id) {
-        this.car_unique_id = car_unique_id;
-    }
-
-     public int getNetwork_status() {
-        return network_status;
-    }
-
-    public void setNetwork_status(int network_status) {
-        this.network_status = network_status;
-    }
-
-    public int getCharge_status() {
-        return charge_status;
-    }
-
-    public void setCharge_status(int charge_status) {
-        this.charge_status = charge_status;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
-
-    public double getGps_speed() {
-        return gps_speed;
-    }
-
-    public void setGps_speed(double gps_speed) {
-        this.gps_speed = gps_speed;
-    }
-
-    public int getMind_cons() {
-        return mind_cons;
-    }
-
-    public void setMind_cons(int mind_cons) {
-        this.mind_cons = mind_cons;
-    }
-
-    public int getDiretion() {
-        return diretion;
-    }
-
-    public void setDiretion(int diretion) {
-        this.diretion = diretion;
-    }
-
-    public int getAlarm() {
-        return alarm;
-    }
-
-    public void setAlarm(int alarm) {
-        this.alarm = alarm;
-    }
-
-    public int getPower_model() {
-        return power_model;
-    }
-
-    public void setPower_model(int power_model) {
-        this.power_model = power_model;
-    }
-
-    public int getMileage() {
-        return mileage;
-    }
-
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
-    }
-
-    public int getTotal_volatge() {
-        return total_volatge;
-    }
-
-    public void setTotal_volatge(int total_volatge) {
-        this.total_volatge = total_volatge;
-    }
-
-    public int getTotal_electicity() {
-        return total_electicity;
-    }
-
-    public void setTotal_electicity(int total_electicity) {
-        this.total_electicity = total_electicity;
-    }
-
-    public int getSoc() {
-        return soc;
-    }
-
-    public void setSoc(int soc) {
-        this.soc = soc;
-    }
-
-    public int getLaunch_status() {
-        return launch_status;
-    }
-
-    public void setLaunch_status(int launch_status) {
-        this.launch_status = launch_status;
-    }
-
-    public int getMileage_surplus() {
-        return mileage_surplus;
-    }
-
-    public void setMileage_surplus(int mileage_surplus) {
-        this.mileage_surplus = mileage_surplus;
-    }
-
-    public int getDoor() {
-        return door;
-    }
-
-    public void setDoor(int door) {
-        this.door = door;
-    }
-
-    public float getVoltage() {
-        return voltage;
-    }
-
-    public void setVoltage(float voltage) {
-        this.voltage = voltage;
-    }
-
-    public String getGear() {
-        return gear;
-    }
-
-    public void setGear(String gear) {
-        this.gear = gear;
-    }
-
-    public int getObd_stagus() {
-        return obd_stagus;
-    }
-
-    public void setObd_stagus(int obd_stagus) {
-        this.obd_stagus = obd_stagus;
-    }
-
-    public String getMachine_version() {
-        return machine_version;
-    }
-
-    public void setMachine_version(String machine_version) {
-        this.machine_version = machine_version;
-    }
-
-    public int getGprs_signal() {
-        return gprs_signal;
-    }
-
-    public void setGprs_signal(int gprs_signal) {
-        this.gprs_signal = gprs_signal;
-    }
-
-    public int getGps_signal() {
-        return gps_signal;
-    }
-
-    public void setGps_signal(int gps_signal) {
-        this.gps_signal = gps_signal;
-    }
-
-    public int getPositioning_validity() {
-        return positioning_validity;
-    }
-
-    public void setPositioning_validity(int positioning_validity) {
-        this.positioning_validity = positioning_validity;
-    }
-
-    public int getRunning_lights() {
-        return running_lights;
-    }
-
-    public void setRunning_lights(int running_lights) {
-        this.running_lights = running_lights;
-    }
-
-    public int getReturn_car_status() {
-        return return_car_status;
-    }
-
-    public void setReturn_car_status(int return_car_status) {
-        this.return_car_status = return_car_status;
-    }
-
-    public int getReady_status() {
-        return ready_status;
-    }
-
-    public void setReady_status(int ready_status) {
-        this.ready_status = ready_status;
-    }
-
-    public int getAlarm_status_4() {
-        return alarm_status_4;
-    }
-
-    public void setAlarm_status_4(int alarm_status_4) {
-        this.alarm_status_4 = alarm_status_4;
-    }
-
-    public int getAlarm_status_5() {
-        return alarm_status_5;
-    }
-
-    public void setAlarm_status_5(int alarm_status_5) {
-        this.alarm_status_5 = alarm_status_5;
-    }
-
-    public int getAlarm_status_6() {
-        return alarm_status_6;
-    }
-
-    public void setAlarm_status_6(int alarm_status_6) {
-        this.alarm_status_6 = alarm_status_6;
-    }
-
-    public int getAlarm_status_7() {
-        return alarm_status_7;
-    }
-
-    public void setAlarm_status_7(int alarm_status_7) {
-        this.alarm_status_7 = alarm_status_7;
-    }
-
-    public int getAlarm_status_8() {
-        return alarm_status_8;
-    }
-
-    public void setAlarm_status_8(int alarm_status_8) {
-        this.alarm_status_8 = alarm_status_8;
-    }
-
-    public int getAlarm_status_9() {
-        return alarm_status_9;
-    }
-
-    public void setAlarm_status_9(int alarm_status_9) {
-        this.alarm_status_9 = alarm_status_9;
-    }
-
-    public int getAlarm_status_a() {
-        return alarm_status_a;
-    }
-
-    public void setAlarm_status_a(int alarm_status_a) {
-        this.alarm_status_a = alarm_status_a;
-    }
-
-    public int getAlarm_status_b() {
-        return alarm_status_b;
-    }
-
-    public void setAlarm_status_b(int alarm_status_b) {
-        this.alarm_status_b = alarm_status_b;
-    }
-
-    public int getAlarm_status_c() {
-        return alarm_status_c;
-    }
-
-    public void setAlarm_status_c(int alarm_status_c) {
-        this.alarm_status_c = alarm_status_c;
-    }
-
-    public int getAlarm_status_d() {
-        return alarm_status_d;
-    }
-
-    public void setAlarm_status_d(int alarm_status_d) {
-        this.alarm_status_d = alarm_status_d;
-    }
-
-    public int getAlarm_status_e() {
-        return alarm_status_e;
-    }
-
-    public void setAlarm_status_e(int alarm_status_e) {
-        this.alarm_status_e = alarm_status_e;
-    }
-
-    public int getAlarm_status_f() {
-        return alarm_status_f;
-    }
-
-    public void setAlarm_status_f(int alarm_status_f) {
-        this.alarm_status_f = alarm_status_f;
-    }
-
-    public long getTime() {
-        return time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
-    }
-
-    public long getAccept_time() {
-        return accept_time;
-    }
-
-    public void setAccept_time(long accept_time) {
-        this.accept_time = accept_time;
-    }
-
-    public long getGps_time() {
-        return gps_time;
-    }
-
-    public void setGps_time(long gps_time) {
-        this.gps_time = gps_time;
-    }
-
-    public int getAcc_status() {
-        return acc_status;
-    }
-
-    public void setAcc_status(int acc_status) {
-        this.acc_status = acc_status;
-    }
+	/**
+	 * @return equipment_id
+	 */
+	public String getEquipment_id() {
+		return equipment_id;
+	}
+	/**
+	 * @param equipment_id 要设置的 equipment_id
+	 */
+	public void setEquipment_id(String equipment_id) {
+		this.equipment_id = equipment_id;
+	}
+	/**
+	 * @return message_sn
+	 */
+	public int getMessage_sn() {
+		return message_sn;
+	}
+	/**
+	 * @param message_sn 要设置的 message_sn
+	 */
+	public void setMessage_sn(int message_sn) {
+		this.message_sn = message_sn;
+	}
+	/**
+	 * @return lenght
+	 */
+	public int getLenght() {
+		return lenght;
+	}
+	/**
+	 * @param lenght 要设置的 lenght
+	 */
+	public void setLenght(int lenght) {
+		this.lenght = lenght;
+	}
+	/**
+	 * @return type
+	 */
+	public int getType() {
+		return type;
+	}
+	/**
+	 * @param type 要设置的 type
+	 */
+	public void setType(int type) {
+		this.type = type;
+	}
+	/**
+	 * @return time
+	 */
+	public long getTime() {
+		return time;
+	}
+	/**
+	 * @param time 要设置的 time
+	 */
+	public void setTime(long time) {
+		this.time = time;
+	}
+	/**
+	 * @return obd_stagus
+	 */
+	public int getObd_stagus() {
+		return obd_stagus;
+	}
+	/**
+	 * @param obd_stagus 要设置的 obd_stagus
+	 */
+	public void setObd_stagus(int obd_stagus) {
+		this.obd_stagus = obd_stagus;
+	}
+	/**
+	 * @return running_lights
+	 */
+	public int getRunning_lights() {
+		return running_lights;
+	}
+	/**
+	 * @param running_lights 要设置的 running_lights
+	 */
+	public void setRunning_lights(int running_lights) {
+		this.running_lights = running_lights;
+	}
+	/**
+	 * @return return_car_status
+	 */
+	public int getReturn_car_status() {
+		return return_car_status;
+	}
+	/**
+	 * @param return_car_status 要设置的 return_car_status
+	 */
+	public void setReturn_car_status(int return_car_status) {
+		this.return_car_status = return_car_status;
+	}
+	/**
+	 * @return ready_status
+	 */
+	public int getReady_status() {
+		return ready_status;
+	}
+	/**
+	 * @param ready_status 要设置的 ready_status
+	 */
+	public void setReady_status(int ready_status) {
+		this.ready_status = ready_status;
+	}
+	/**
+	 * @return long_term_lease
+	 */
+	public int getLong_term_lease() {
+		return long_term_lease;
+	}
+	/**
+	 * @param long_term_lease 要设置的 long_term_lease
+	 */
+	public void setLong_term_lease(int long_term_lease) {
+		this.long_term_lease = long_term_lease;
+	}
+	/**
+	 * @return door
+	 */
+	public int getDoor() {
+		return door;
+	}
+	/**
+	 * @param door 要设置的 door
+	 */
+	public void setDoor(int door) {
+		this.door = door;
+	}
+	/**
+	 * @return positioning_validity
+	 */
+	public int getPositioning_validity() {
+		return positioning_validity;
+	}
+	/**
+	 * @param positioning_validity 要设置的 positioning_validity
+	 */
+	public void setPositioning_validity(int positioning_validity) {
+		this.positioning_validity = positioning_validity;
+	}
+	/**
+	 * @return mind_cons
+	 */
+	public int getMind_cons() {
+		return mind_cons;
+	}
+	/**
+	 * @param mind_cons 要设置的 mind_cons
+	 */
+	public void setMind_cons(int mind_cons) {
+		this.mind_cons = mind_cons;
+	}
+	/**
+	 * @return alarm
+	 */
+	public int getAlarm() {
+		return alarm;
+	}
+	/**
+	 * @param alarm 要设置的 alarm
+	 */
+	public void setAlarm(int alarm) {
+		this.alarm = alarm;
+	}
+	/**
+	 * @return acc_status
+	 */
+	public int getAcc_status() {
+		return acc_status;
+	}
+	/**
+	 * @param acc_status 要设置的 acc_status
+	 */
+	public void setAcc_status(int acc_status) {
+		this.acc_status = acc_status;
+	}
+	/**
+	 * @return charge_status
+	 */
+	public int getCharge_status() {
+		return charge_status;
+	}
+	/**
+	 * @param charge_status 要设置的 charge_status
+	 */
+	public void setCharge_status(int charge_status) {
+		this.charge_status = charge_status;
+	}
+	/**
+	 * @return gps_signal
+	 */
+	public int getGps_signal() {
+		return gps_signal;
+	}
+	/**
+	 * @param gps_signal 要设置的 gps_signal
+	 */
+	public void setGps_signal(int gps_signal) {
+		this.gps_signal = gps_signal;
+	}
+	/**
+	 * @return longitude
+	 */
+	public double getLongitude() {
+		return longitude;
+	}
+	/**
+	 * @param longitude 要设置的 longitude
+	 */
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+	/**
+	 * @return latitude
+	 */
+	public double getLatitude() {
+		return latitude;
+	}
+	/**
+	 * @param latitude 要设置的 latitude
+	 */
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	/**
+	 * @return diretion
+	 */
+	public int getDiretion() {
+		return diretion;
+	}
+	/**
+	 * @param diretion 要设置的 diretion
+	 */
+	public void setDiretion(int diretion) {
+		this.diretion = diretion;
+	}
+	/**
+	 * @return gps_speed
+	 */
+	public double getGps_speed() {
+		return gps_speed;
+	}
+	/**
+	 * @param gps_speed 要设置的 gps_speed
+	 */
+	public void setGps_speed(double gps_speed) {
+		this.gps_speed = gps_speed;
+	}
+	/**
+	 * @return speed
+	 */
+	public double getSpeed() {
+		return speed;
+	}
+	/**
+	 * @param speed 要设置的 speed
+	 */
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+	/**
+	 * @return gear
+	 */
+	public String getGear() {
+		return gear;
+	}
+	/**
+	 * @param gear 要设置的 gear
+	 */
+	public void setGear(String gear) {
+		this.gear = gear;
+	}
+	/**
+	 * @return soc
+	 */
+	public int getSoc() {
+		return soc;
+	}
+	/**
+	 * @param soc 要设置的 soc
+	 */
+	public void setSoc(int soc) {
+		this.soc = soc;
+	}
+	/**
+	 * @return mileage_surplus
+	 */
+	public int getMileage_surplus() {
+		return mileage_surplus;
+	}
+	/**
+	 * @param mileage_surplus 要设置的 mileage_surplus
+	 */
+	public void setMileage_surplus(int mileage_surplus) {
+		this.mileage_surplus = mileage_surplus;
+	}
+	/**
+	 * @return voltage
+	 */
+	public float getVoltage() {
+		return voltage;
+	}
+	/**
+	 * @param voltage 要设置的 voltage
+	 */
+	public void setVoltage(float voltage) {
+		this.voltage = voltage;
+	}
+	/**
+	 * @return mileage
+	 */
+	public int getMileage() {
+		return mileage;
+	}
+	/**
+	 * @param mileage 要设置的 mileage
+	 */
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
+	}
+	/**
+	 * @return total_volatge
+	 */
+	public int getTotal_volatge() {
+		return total_volatge;
+	}
+	/**
+	 * @param total_volatge 要设置的 total_volatge
+	 */
+	public void setTotal_volatge(int total_volatge) {
+		this.total_volatge = total_volatge;
+	}
+	/**
+	 * @return total_electicity
+	 */
+	public int getTotal_electicity() {
+		return total_electicity;
+	}
+	/**
+	 * @param total_electicity 要设置的 total_electicity
+	 */
+	public void setTotal_electicity(int total_electicity) {
+		this.total_electicity = total_electicity;
+	}
+	/**
+	 * @return machine_version
+	 */
+	public String getMachine_version() {
+		return machine_version;
+	}
+	/**
+	 * @param machine_version 要设置的 machine_version
+	 */
+	public void setMachine_version(String machine_version) {
+		this.machine_version = machine_version;
+	}
+	/**
+	 * @return gprs_signal
+	 */
+	public int getGprs_signal() {
+		return gprs_signal;
+	}
+	/**
+	 * @param gprs_signal 要设置的 gprs_signal
+	 */
+	public void setGprs_signal(int gprs_signal) {
+		this.gprs_signal = gprs_signal;
+	}
+
+
+   
 }
