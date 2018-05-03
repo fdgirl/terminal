@@ -1,0 +1,87 @@
+{
+  "door": 0,
+  "mind_cons": 1,
+  "soc": 0,
+  "latitude": 23.1546,
+  "type": 4,
+  "machine_version": "2.4.1",
+  "obd_stagus": 0,
+  "running_lights": 0,
+  "speed": 0,
+  "total_electicity": 0,
+  "charge_status": 0,
+  "gps_signal": 9,
+  "positioning_validity": 1,
+  "alarm": 0,
+  "total_volatge": 0,
+  "long_term_lease": 0,
+  "terminal_id": "0000000B121171118001",
+  "ready_status": 0,
+  "longitude": 113.50185333333333,
+  "mileage": 0,
+  "mileage_surplus": 0,
+  "message_sn": -74,
+  "acc_status": 0,
+  "gps_speed": 0,
+  "voltage": 11,
+  "lenght": 41,
+  "return_car_status": 0,
+  "gprs_signal": 26,
+  "time": 1511008433000,
+  "diretion": 234,
+  "gear": "P"
+}
+
+{
+	data = {
+		door = 0,
+		mind_cons = 1,
+		soc = 0,
+		latitude = 23.1546,
+		type = 4,
+		machine_version = 2.4 .1,
+		obd_stagus = 0,
+		running_lights = 0,
+		speed = 0,
+		total_electicity = 0,
+		charge_status = 0,
+		gps_signal = 9,
+		positioning_validity = 1,
+		alarm = 0,
+		total_volatge = 0,
+		long_term_lease = 0,
+		terminal_id = 0000000 B121171118001,
+		ready_status = 0,
+		longitude = 113.50185333333333,
+		mileage = 0,
+		mileage_surplus = 0,
+		message_sn = -74,
+		acc_status = 0,
+		gps_speed = 0,
+		voltage = 11,
+		lenght = 41,
+		return_car_status = 0,
+		gprs_signal = 26,
+		time = 1511008433000,
+		diretion = 234,
+		gear = P
+	}, type = gps, terminal_id = 0000000 B121171118001
+}
+
+
+991966099098611712
+Everyone WakeUp and Work!
+Thread2 GOT ONE MESSAGE! D42CDDF03A5C4C7A-1-163253CAEEE-2000006CB
+Thread2 GOT ONE MESSAGE! {"payload":"qgAAAAsSEAAAAAH+AAYAAYAMBAB5qg==","messagetype":"upload","topic":"/npJjy9BRTvw/0000000B121000000001/update","messageid":991966105239052288,"timestamp":1525338124}
+{"payload":"qgAAAAsSEAAAAAH+AAYAAYAMBAB5qg==","messagetype":"upload","topic":"/npJjy9BRTvw/0000000B121000000001/update","messageid":991966105239052288,"timestamp":1525338124}
+{"payload":"qgAAAAsSEAAAAAH+AAYAAYAMBAB5qg==","messagetype":"upload","topic":"/npJjy9BRTvw/0000000B121000000001/update","messageid":991966105239052288,"timestamp":1525338124}
+Thread3 Polling!
+Thread3 KEEP Polling!
+{data={lenght=6, message_sn=-2, type=whistle, request_sn=4, terminal_id=0000000B121000000001, status=success}, type=ack, terminal_id=0000000B121000000001}
+ACK
+
+
+
+Thread2 KEEP Polling!
+{car_unique_id=0000000000, supplier_no=1376920002}
+{"car_unique_id":"0000000000","network_status":1,"charge_status":0,"longitude":114.433775,"latitude":38.01732833333333,"speed":0,"direction":0,"power_model":1,"mileage":0.0,"total_voltage":0.0,"total_electricity":0.0,"soc":0.0,"launch_status":0,"mileage_surplus":0.0,"door_lf":0,"door_rf":0,"door_lb":0,"door_rb":0,"trunk":0,"voltage":12.0,"gear":"N","obd_status":1,"machine_version":"0.0.0","gprs_signal":14,"gps_signal":12,"positioning_validity":1,"time":1525338091000,"machine_report_time":1525338091000,"machine_platform_receive_time":1525338101958,"acc_status":0,"ready_status":0,"return_car_status":1}
