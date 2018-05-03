@@ -2,18 +2,12 @@ package com.zim.terminal;
 
 import java.util.Map;
 
+import com.zim.terminal.pojo.Analysis;
 import com.zim.terminal.saika.ack.Ack8XXX;
 
 public class Automatic implements Terminal {
 
-	@Override
-	public Map<String, Object> anlysis(String string) {
-		if(string.substring(2, 9).equals("0000000")) {
-			return new SaiKa().anlysis(string);
-		}
-
-		return null;
-	}
+	
 	
 	public String sreverAck(String string, boolean bool) {
 		if(string.substring(0, 7).equals("0000000")) {
@@ -95,6 +89,12 @@ public class Automatic implements Terminal {
 		if(terminal.substring(2, 9).equals("0000000")) {
 			return Ack8XXX.ack8010(terminal, type);
 		}
+		return null;
+	}
+
+	@Override
+	public Analysis<Object> anlysis(byte[] bytes) {
+		// TODO 自动生成的方法存根
 		return null;
 	}
 

@@ -4,19 +4,16 @@ package com.zim.terminal.pojo;
  * 解析数据结果
  * */
 public class Analysis<T> {
-	private String terminal_id;
-	
+
+	/*
+	 * 解析后数据的类型
+	 * */
 	private String type;
 	
+	/*
+	 * 根据类型转换成对应的数据对象
+	 * */
 	private T data;
-
-	public String getTerminal_id() {
-		return terminal_id;
-	}
-
-	public void setTerminal_id(String terminal_id) {
-		this.terminal_id = terminal_id;
-	}
 
 	public String getType() {
 		return type;

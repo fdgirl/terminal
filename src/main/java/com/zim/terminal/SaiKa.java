@@ -1,37 +1,40 @@
 package com.zim.terminal;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.zim.terminal.pojo.Analysis;
+import com.zim.terminal.pojo.Photo;
+import com.zim.terminal.pojo.GpsInfo;
 import com.zim.terminal.saika.ack.Ack0001;
 import com.zim.terminal.saika.ack.Ack8XXX;
 import com.zim.terminal.saika.ack.Gps0004;
+import com.zim.terminal.utils.FormatUtils;
 
 public class SaiKa implements Terminal {
-	
-	public Map<String, Object> anlysis(String string) {
-		if(string==null) {
-			return null;
-		}
-		Map<String, Object> params = new HashMap<>();
-
-		params.put("terminal_id", string.substring(2,22));
-		switch (Integer.parseInt(string.substring(30, 32),16)) {
+	private final static Base64.Decoder decoder = Base64.getDecoder();
+	public Analysis<Object> anlysis(byte[] bytes) {
+		//创建返回对象
+		Analysis<Object> returnResult = new Analysis<Object>();
+		
+		//判断数据类型并分配对象
+		switch (bytes[15]) {
 		case 0x01:
-			params.put("type", "ack");
-			params.put("data",new Ack0001(string).analysis());
-			break;
-		case 0x03:
+			returnResult.setType("ACK");
 			
 			break;
+		case 0x03:
+			returnResult.setType("PHOTO");
+			break;
 		case 0x04:
-			params.put("type", "gps");
-			params.put("data",new Gps0004(string).analysis());
+			returnResult.setType("GPS");
 			break;
 		default:
 			break;
-		} 
-		return params;
+		}
+		
+		return returnResult;
 	}
 	
 	public String sreverAck(String string, boolean bool) {
@@ -79,10 +82,17 @@ public class SaiKa implements Terminal {
 	}
 	public static void main(String[] args) {
 		Terminal terminal = new SaiKa();
-		Map<String, Object> res = terminal.anlysis("AA0000000B121171118001B60029000417111820335300001E091133011120230927607500000F000000000B000000000000000002291A04AA");
+		String base= "qgAAAAsSEAAAAAF8ACkABBgFAhVVIwAFHg0RQmARIDgBAYGXAAANAAAAAAwAAAAAAAAAAAEUDgWq";
+    	byte[] analysis = null;
+		analysis = decoder.decode(base);
+		Analysis<Object> res = terminal.anlysis(analysis);
+		System.out.println(res.getType());
+//		Photo data = (Photo) res.getData();
+//		System.out.println(data.getSize());
+		/*Map<String, Object> res = terminal.anlysis();
 		System.out.println(res);
 		String string = terminal.photo("120000");
-		System.out.println(string);
+		System.out.println(string);*/
 	}
 
 

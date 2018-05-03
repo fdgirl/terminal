@@ -3,7 +3,7 @@ package com.zim.terminal.pojo;
 /**
  * 实时整车数据
  */
-public class RealInfo {
+public class GpsInfo {
     /**
      * 车载终端ID
      */

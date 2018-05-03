@@ -1,10 +1,10 @@
 package com.zim.terminal;
 
-import java.util.Map;
+import com.zim.terminal.pojo.Analysis;
 
 public interface Terminal {
 	
-	public Map<String, Object> anlysis(String string);
+	public Analysis<Object> anlysis(byte[] bytes);
 	
 	public String sreverAck(String string,boolean bool);
 	
