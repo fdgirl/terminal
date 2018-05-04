@@ -1,20 +1,12 @@
 package com.zim.terminal;
 
 import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.xml.crypto.Data;
-
 import com.zim.terminal.pojo.AckInfo;
 import com.zim.terminal.pojo.Analysis;
-import com.zim.terminal.pojo.Photo;
-import com.zim.terminal.pojo.GpsInfo;
 import com.zim.terminal.saika.ack.Ack0001;
 import com.zim.terminal.saika.ack.Ack8XXX;
 import com.zim.terminal.saika.ack.Gps0004;
 import com.zim.terminal.saika.ack.Image0003;
-import com.zim.terminal.utils.FormatUtils;
 
 public class SaiKa implements Terminal {
 	private final static Base64.Decoder decoder = Base64.getDecoder();
