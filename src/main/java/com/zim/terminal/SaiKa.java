@@ -10,6 +10,7 @@ import com.zim.terminal.pojo.GpsInfo;
 import com.zim.terminal.saika.ack.Ack0001;
 import com.zim.terminal.saika.ack.Ack8XXX;
 import com.zim.terminal.saika.ack.Gps0004;
+import com.zim.terminal.saika.ack.Image0003;
 import com.zim.terminal.utils.FormatUtils;
 
 public class SaiKa implements Terminal {
@@ -26,6 +27,7 @@ public class SaiKa implements Terminal {
 			break;
 		case 0x03:
 			returnResult.setType("PHOTO");
+			returnResult.setData(new Image0003(bytes).analysis());
 			break;
 		case 0x04:
 			returnResult.setType("GPS");
@@ -82,14 +84,18 @@ public class SaiKa implements Terminal {
 		return Ack8XXX.ack8010(terminal, type);
 	}
 	public static void main(String[] args) {
-		/*Terminal terminal = new SaiKa();
-		String base= "qgAAAAsSEAAAAAF8ACkABBgFAhVVIwAFHg0RQmARIDgBAYGXAAANAAAAAAwAAAAAAAAAAAEUDgWq";
+		Terminal terminal = new SaiKa();
+//		String base= "qgAAAAsSEAAAAAH+AAYAAYAMBAB5qg==";
     	byte[] analysis = null;
-		analysis = decoder.decode(base);
+//		analysis = decoder.decode(base);
+    	analysis = FormatUtils.strToByte("AA0000000B121171118001B60019000300FF010102030405120624153055116040000033320000AA");
 		Analysis<Object> res = terminal.anlysis(analysis);
 		System.out.println(res.getType());
-		GpsInfo data = (GpsInfo) res.getData();
-		System.out.println(data.getObd_stagus());*/
+		Photo data = (Photo) res.getData();
+		System.out.println(data);
+		System.err.println(data.getBis());
+//		GpsInfo data = (GpsInfo) res.getData();
+//		System.out.println(data.getObd_stagus());
 //		Photo data = (Photo) res.getData();
 //		System.out.println(data.getSize());
 		/*Map<String, Object> res = terminal.anlysis();

@@ -10,12 +10,13 @@ public class AckInfo {
 	
 	private int length;
 	
-	private String type;
+	private int type;
 	
 	private int request_sn;
 	
 	private boolean status;
-
+	
+	private String ackType;
 	/**
 	 * @return equipment_id
 	 */
@@ -44,33 +45,7 @@ public class AckInfo {
 		this.message_sn = message_sn;
 	}
 
-	/**
-	 * @return length
-	 */
-	public int getLenght() {
-		return length;
-	}
 
-	/**
-	 * @param lenght 要设置的 length
-	 */
-	public void setLenght(int length) {
-		this.length = length;
-	}
-
-	/**
-	 * @return type
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
-	 * @param type 要设置的 type
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
 
 	/**
 	 * @return request_sn
@@ -98,6 +73,48 @@ public class AckInfo {
 	 */
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	/**
+	 * @return length
+	 */
+	public int getLength() {
+		return length;
+	}
+
+	/**
+	 * @param length 要设置的 length
+	 */
+	public void setLength(int length) {
+		this.length = length;
+	}
+
+	/**
+	 * @return ackType
+	 */
+	public String getAckType() {
+		return ackType;
+	}
+
+	/**
+	 * @param ackType 要设置的 ackType
+	 */
+	public void setAckType(String ackType) {
+		this.ackType = ackType;
+	}
+
+	/**
+	 * @return type
+	 */
+	public int getType() {
+		return type;
+	}
+
+	/**
+	 * @param type 要设置的 type
+	 */
+	public void setType(int type) {
+		this.type = type;
 	}
 	
 }

@@ -25,39 +25,40 @@ public class Ack0001 {
 		AckInfo params = new AckInfo();
 		String terminalId = data.substring(2, 22);
 		params.setEquipment_id(terminalId);
-		params.setLenght(length);
+		params.setLength(length);
 		params.setMessage_sn(message[11]);
+		params.setType(message[14]+message[15]);
 		switch (message[17]) {
 			case 0x08:
-	            params.setType("UPGRADEDEVICE");
+	            params.setAckType("UPGRADEDEVICE");
 	            break;
 	        case 0x09:
 	            // 远程开/关锁
-	        	params.setType("LOCK");
+	        	params.setAckType("LOCK");
 	            break;
 	        case 0x0a:
 	            // 远程启/停
-	        	params.setType("IGNITE");
+	        	params.setAckType("IGNITE");
 	            break;
 	        case 0x0c:
 	            // 鸣笛
-	        	params.setType("WHISTLE");
+	        	params.setAckType("WHISTLE");
 	            break;
 	        case 0x0d:
 	            // 蓝牙复位
-	        	params.setType("BLUETOOTHRESET");
+	        	params.setAckType("BLUETOOTHRESET");
 	            break;
 	        case 0x0e:
 	            // 改蓝牙密码
-	        	params.setType("BLUETOOTHPASS");
+	        	params.setAckType("BLUETOOTHPASS");
 	            break;
 	        case 0x0f:
 	            // 拍照
-	        	params.setType("PHOTO");
+	        	params.setAckType("PHOTO");
 	            break;
 	        case 0x10:
 	            // 长租
-	        	params.setType("RENT");
+	        	params.setAckType("RENT");
 	            break;
 	        default:
 	            break;
