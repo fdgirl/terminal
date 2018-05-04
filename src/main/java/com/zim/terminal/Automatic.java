@@ -1,15 +1,19 @@
 package com.zim.terminal;
 
-import java.util.Map;
-
 import com.zim.terminal.pojo.Analysis;
 import com.zim.terminal.saika.ack.Ack8XXX;
 
 public class Automatic implements Terminal {
 
 	
-	
-	public String sreverAck(String string, boolean bool) {
+	public Analysis<Object> anlysis(byte[] bytes) {
+		if((bytes[1]+bytes[2]+bytes[3])==0) {
+			return new SaiKa().anlysis(bytes);
+		}
+
+		return null;
+	}
+	public byte[] sreverAck(String string, boolean bool) {
 		if(string.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack8001(string, bool);
 		}
@@ -17,7 +21,7 @@ public class Automatic implements Terminal {
 	}
 
 	@Override
-	public String heartBeat(String terminal) {
+	public byte[] heartBeat(String terminal) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack8006(terminal);
 		}
@@ -25,19 +29,15 @@ public class Automatic implements Terminal {
 	}
 
 	@Override
-	public String update(String terminal, String version) {
+	public byte[] update(String terminal, String version,String ftp) {
 		if(terminal.substring(0, 7).equals("0000000")) {
-			StringBuilder address = new StringBuilder("ftp:120.79.31.177,21,cheji,cheji,openatE");
-			address.append(version.replaceAll("\\.", "").replaceAll("V", "").replaceAll("v", ""));
-			address.append(".dll");
-			System.out.println(address);
-			return Ack8XXX.ack8008(terminal,address.toString());
+			return new SaiKa().update(terminal, version, ftp);
 		}
 		return null;
 	}
 
 	@Override
-	public String lock(String terminal, boolean bool) {
+	public byte[] lock(String terminal, boolean bool) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack8009(terminal,bool);
 		}
@@ -45,7 +45,7 @@ public class Automatic implements Terminal {
 	}
 
 	@Override
-	public String ignite(String terminal, boolean bool) {
+	public byte[] ignite(String terminal, boolean bool) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800A(terminal,bool);
 		}
@@ -53,7 +53,7 @@ public class Automatic implements Terminal {
 	}
 
 	@Override
-	public String whistle(String terminal, boolean bool) {
+	public byte[] whistle(String terminal, boolean bool) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800C(terminal,bool);
 		}
@@ -61,7 +61,7 @@ public class Automatic implements Terminal {
 	}
 
 	@Override
-	public String initBluetooth(String terminal) {
+	public byte[] initBluetooth(String terminal) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800D(terminal);
 		}
@@ -69,7 +69,7 @@ public class Automatic implements Terminal {
 	}
 
 	@Override
-	public String password(String terminal, String password) {
+	public byte[] password(String terminal, String password) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800E(terminal,password);
 		}
@@ -77,7 +77,7 @@ public class Automatic implements Terminal {
 	}
 
 	@Override
-	public String photo(String terminal) {
+	public byte[] photo(String terminal) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800F(terminal);
 		}
@@ -85,16 +85,10 @@ public class Automatic implements Terminal {
 	}
 
 	@Override
-	public String rent(String terminal, int type) {
-		if(terminal.substring(2, 9).equals("0000000")) {
+	public byte[] rent(String terminal, int type) {
+		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack8010(terminal, type);
 		}
-		return null;
-	}
-
-	@Override
-	public Analysis<Object> anlysis(byte[] bytes) {
-		// TODO 自动生成的方法存根
 		return null;
 	}
 

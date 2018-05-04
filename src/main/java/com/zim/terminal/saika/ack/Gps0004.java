@@ -3,9 +3,6 @@ package com.zim.terminal.saika.ack;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.zim.terminal.pojo.GpsInfo;
 import com.zim.terminal.utils.FormatUtils;
 

@@ -6,7 +6,7 @@ import com.zim.terminal.utils.FormatUtils;
 
 public class Ack8XXX {
 	
-	public static String ack8001(String terminal,boolean bool) {
+	public static byte[] ack8001(String terminal,boolean bool) {
 		byte[] _terminal = FormatUtils.strToByte(terminal.substring(2, 22));
 		byte sn = FormatUtils.getSN();
         byte[] cmd = new byte[]{(byte) 0x80, 0x01};
@@ -34,11 +34,11 @@ public class Ack8XXX {
         byte xy = FormatUtils.bytesOr(_message);
         byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
         byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
-        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
-        return FormatUtils.byteToHexStr(res);
+        return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+        
 	}
 	
-	public static String ack8006(String terminal) {
+	public static byte[] ack8006(String terminal) {
 		StringBuffer tsb = new StringBuffer(terminal);
         while (tsb.length() < 20) {
             tsb.insert(0, '0');
@@ -59,11 +59,11 @@ public class Ack8XXX {
         byte xy = FormatUtils.bytesOr(_message);
         byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
         byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
-        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
-        return FormatUtils.byteToHexStr(res);
+        return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+   
 	}
 	
-	public static String ack8008(String terminal,String address) {
+	public static byte[] ack8008(String terminal,String address) {
 		if(address == null || terminal == null) {
 			return null;
 		}
@@ -105,11 +105,11 @@ public class Ack8XXX {
         byte xy = FormatUtils.bytesOr(_message);
         byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
         byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
-        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
-        return FormatUtils.byteToHexStr(res);
+        return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+       
 	}
 	
-	public static String ack8009(String terminal,boolean bool) {
+	public static byte[] ack8009(String terminal,boolean bool) {
 		StringBuffer tsb = new StringBuffer(terminal);
         while (tsb.length() < 20) {
             tsb.insert(0, '0');
@@ -136,11 +136,11 @@ public class Ack8XXX {
         byte xy = FormatUtils.bytesOr(_message);
         byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
         byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
-        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
-        return FormatUtils.byteToHexStr(res);
+        return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+         
 	}
 	
-	public static String ack800A(String terminal,boolean bool) {
+	public static byte[] ack800A(String terminal,boolean bool) {
 		StringBuffer tsb = new StringBuffer(terminal);
         while (tsb.length() < 20) {
             tsb.insert(0, '0');
@@ -167,11 +167,11 @@ public class Ack8XXX {
         byte xy = FormatUtils.bytesOr(_message);
         byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
         byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
-        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
-        return FormatUtils.byteToHexStr(res);
+        return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+        
 	}
 	
-	public static String ack800C(String terminal,boolean bool) {
+	public static byte[] ack800C(String terminal,boolean bool) {
 		StringBuffer tsb = new StringBuffer(terminal);
         while (tsb.length() < 20) {
             tsb.insert(0, '0');
@@ -198,11 +198,11 @@ public class Ack8XXX {
         byte xy = FormatUtils.bytesOr(_message);
         byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
         byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
-        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
-        return FormatUtils.byteToHexStr(res);
+        return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+        
 	}
 	
-	public static String ack800D(String terminal) {
+	public static byte[] ack800D(String terminal) {
 		StringBuffer tsb = new StringBuffer(terminal);
         while (tsb.length() < 20) {
             tsb.insert(0, '0');
@@ -223,11 +223,11 @@ public class Ack8XXX {
         byte xy = FormatUtils.bytesOr(_message);
         byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
         byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
-        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
-        return FormatUtils.byteToHexStr(res);
+        return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+        
 	}
 	
-	public static String ack800E(String terminal,String pass) {
+	public static byte[] ack800E(String terminal,String pass) {
 		if(pass == null || terminal == null) {
 			return null;
 		}
@@ -269,11 +269,11 @@ public class Ack8XXX {
         byte xy = FormatUtils.bytesOr(_message);
         byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
         byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
-        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
-        return FormatUtils.byteToHexStr(res);
+        return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+        
 	}
 	
-	public static String ack800F(String terminal) {
+	public static byte[] ack800F(String terminal) {
 		StringBuffer tsb = new StringBuffer(terminal);
         while (tsb.length() < 20) {
             tsb.insert(0, '0');
@@ -294,11 +294,11 @@ public class Ack8XXX {
         byte xy = FormatUtils.bytesOr(_message);
         byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
         byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
-        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
-        return FormatUtils.byteToHexStr(res);
+        return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+        
 	}
 	
-	public static String ack8010(String terminal,int type) {
+	public static byte[] ack8010(String terminal,int type) {
 		StringBuffer tsb = new StringBuffer(terminal);
         while (tsb.length() < 20) {
             tsb.insert(0, '0');
@@ -333,12 +333,8 @@ public class Ack8XXX {
         byte xy = FormatUtils.bytesOr(_message);
         byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
         byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
-        byte[] res = FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
-        return FormatUtils.byteToHexStr(res);
+        return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+       
 	}
-	public static void main(String[] args) {
-//		String reString = ack8001("AA0000000B121171118001B60029000417111820335300001E091133011120230927607500000F000000000B000000000000000002291A04AA", true);
-//		System.out.println(reString);
-		String res = ack800A("0000000B121171118001",false);System.out.println(res);
-	}
+
 }

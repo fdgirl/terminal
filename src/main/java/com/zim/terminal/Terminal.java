@@ -6,24 +6,24 @@ public interface Terminal {
 	
 	public Analysis<Object> anlysis(byte[] bytes);
 	
-	public String sreverAck(String string,boolean bool);
+	public byte[] sreverAck(String string,boolean bool);
 	
-	public String heartBeat(String terminal);
+	public byte[] heartBeat(String terminal);
 	
-	public String update(String terminal,String version);
+	public byte[] update(String terminal,String version,String ftp);
 	
-	public String lock(String terminal,boolean bool);
+	public byte[] lock(String terminal,boolean bool);
 	
-	public String ignite(String terminal,boolean bool);
+	public byte[] ignite(String terminal,boolean bool);
 	
-	public String whistle(String terminal,boolean bool);
+	public byte[] whistle(String terminal,boolean bool);
 	
-	public String initBluetooth(String terminal);
+	public byte[] initBluetooth(String terminal);
 	
-	public String password(String terminal,String password);
+	public byte[] password(String terminal,String password);
 	
-	public String photo(String terminal);
+	public byte[] photo(String terminal);
 	
-	public String rent(String terminal,int type);
+	public byte[] rent(String terminal,int type);
 	
 }

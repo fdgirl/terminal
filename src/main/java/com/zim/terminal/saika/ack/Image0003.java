@@ -20,8 +20,8 @@ public class Image0003 {
 		if (message == null || data==null)
             return null;
 		int length = Integer.parseInt(data.substring(24,28),16);
-		/*if(FormatUtils.vaildata(message,length) != true)
-			return null;*/
+		if(FormatUtils.vaildata(message,length) != true)
+			return null;
 		Photo params = new Photo();
 		
 		String terminalId = data.substring(2, 22);
