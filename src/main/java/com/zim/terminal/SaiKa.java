@@ -1,7 +1,5 @@
 package com.zim.terminal;
 
-import java.util.Base64;
-import com.zim.terminal.pojo.AckInfo;
 import com.zim.terminal.pojo.Analysis;
 import com.zim.terminal.saika.ack.Ack0001;
 import com.zim.terminal.saika.ack.Ack8XXX;
@@ -9,7 +7,6 @@ import com.zim.terminal.saika.ack.Gps0004;
 import com.zim.terminal.saika.ack.Image0003;
 
 public class SaiKa implements Terminal {
-	private final static Base64.Decoder decoder = Base64.getDecoder();
 	public Analysis<Object> anlysis(byte[] bytes) {
 		//创建返回对象
 		Analysis<Object> returnResult = new Analysis<Object>();
@@ -81,13 +78,13 @@ public class SaiKa implements Terminal {
 		return Ack8XXX.ack8010(terminal, type);
 	}
 	public static void main(String[] args) {
-		Terminal terminal = new Automatic();
+		/*Terminal terminal = new Automatic();
 		String base= "qgAAAAsSEAAAAAH+AAYAAYAMBAB5qg==";
     	byte[] analysis = null;
 		analysis = decoder.decode(base);
 //    	analysis = FormatUtils.strToByte("AA0000000B121171118001B60019000300FF01010203040512062415305511604000003332000005AA");
 		Analysis<Object> res = terminal.anlysis(analysis);
-		System.out.println(res.getType());
+		System.out.println(res.getType());*/
 //		Photo data = (Photo) res.getData();
 //		System.out.println(data);
 //		System.err.println(data.getBis());
@@ -99,8 +96,8 @@ public class SaiKa implements Terminal {
 		System.out.println(res);
 		String string = terminal.photo("120000");
 		System.out.println(string);*/
-		AckInfo ackInfo = (AckInfo) res.getData();
-		System.out.println(ackInfo.isStatus());
+//		AckInfo ackInfo = (AckInfo) res.getData();
+//		System.out.println(ackInfo.isStatus());
 	}
 
 
