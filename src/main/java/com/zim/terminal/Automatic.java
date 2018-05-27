@@ -19,8 +19,7 @@ public class Automatic implements Terminal {
 		}
 		return null;
 	}
-
-	@Override
+	
 	public byte[] heartBeat(String terminal) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack8006(terminal);
@@ -28,7 +27,6 @@ public class Automatic implements Terminal {
 		return null;
 	}
 
-	@Override
 	public byte[] update(String terminal, String version,String ftp) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return new SaiKa().update(terminal, version, ftp);
@@ -36,7 +34,6 @@ public class Automatic implements Terminal {
 		return null;
 	}
 
-	@Override
 	public byte[] lock(String terminal, boolean bool) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack8009(terminal,bool);
@@ -44,7 +41,6 @@ public class Automatic implements Terminal {
 		return null;
 	}
 
-	@Override
 	public byte[] ignite(String terminal, boolean bool) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800A(terminal,bool);
@@ -52,7 +48,6 @@ public class Automatic implements Terminal {
 		return null;
 	}
 
-	@Override
 	public byte[] whistle(String terminal, boolean bool) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800C(terminal,bool);
@@ -60,7 +55,6 @@ public class Automatic implements Terminal {
 		return null;
 	}
 
-	@Override
 	public byte[] initBluetooth(String terminal) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800D(terminal);
@@ -68,7 +62,6 @@ public class Automatic implements Terminal {
 		return null;
 	}
 
-	@Override
 	public byte[] password(String terminal, String password) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800E(terminal,password);
@@ -76,7 +69,6 @@ public class Automatic implements Terminal {
 		return null;
 	}
 
-	@Override
 	public byte[] photo(String terminal) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack800F(terminal);
@@ -84,12 +76,20 @@ public class Automatic implements Terminal {
 		return null;
 	}
 
-	@Override
 	public byte[] rent(String terminal, int type) {
 		if(terminal.substring(0, 7).equals("0000000")) {
 			return Ack8XXX.ack8010(terminal, type);
 		}
 		return null;
 	}
-
+	
+	public byte[] secret(String terminal,String productKey,String secret) {
+		if(terminal.substring(0, 7).equals("0000000")) {
+			if(productKey.length()!=11 || secret.length()!=32) {
+				return null;
+			}
+			return Ack8XXX.ack8011(terminal,productKey,secret);
+		}
+		return null;
+	}
 }

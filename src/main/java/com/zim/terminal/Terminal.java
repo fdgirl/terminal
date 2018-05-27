@@ -26,4 +26,5 @@ public interface Terminal {
 	
 	public byte[] rent(String terminal,int type);
 	
+	public byte[] secret(String terminal,String productKey,String secret);
 }

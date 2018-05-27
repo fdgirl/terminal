@@ -59,6 +59,11 @@
 	@int 租赁类型
 	public byte[] rent(String terminal,int type);
 	
+	设置IOT String productKey,String DeviceSecret
+	@String productKey
+	@String DeviceSecret
+	public byte[] secret(String terminal,String productKey,String DeviceSecret);
+	
 ```
 ### 例:
 	1.
