@@ -5,6 +5,7 @@ import com.zim.terminal.saika.ack.Ack0001;
 import com.zim.terminal.saika.ack.Ack8XXX;
 import com.zim.terminal.saika.ack.Gps0004;
 import com.zim.terminal.saika.ack.Image0003;
+import com.zim.terminal.utils.FormatUtils;
 
 public class SaiKa implements Terminal {
 	public Analysis<Object> anlysis(byte[] bytes) {
@@ -85,6 +86,10 @@ public class SaiKa implements Terminal {
 		return Ack8XXX.ack8011(terminal,productKey,secret);
 	}
 	public static void main(String[] args) {
+		/*Terminal terminal = new Automatic();
+		byte[] analysis = terminal.secret("0000000B121171118001", "a1idNzoUyCt", "GaSmuC8f06GM4Sc5MzovEGaG05DSjUkb");
+		System.out.println(FormatUtils.byteToHexStr(analysis));*/
+		
 		/*Terminal terminal = new Automatic();
 		String base= "qgAAAAsSEAAAAAH+AAYAAYAMBAB5qg==";
     	byte[] analysis = null;
