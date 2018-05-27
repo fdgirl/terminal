@@ -336,5 +336,45 @@ public class Ack8XXX {
         return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
        
 	}
+	
+	public static byte[] ack8011(String terminal,String productKey,String secret) {
+		StringBuffer tsb = new StringBuffer(terminal);
+        while (tsb.length() < 20) {
+            tsb.insert(0, '0');
+        }
+        byte[] _terminal = FormatUtils.strToByte(tsb.toString());
+        byte sn = FormatUtils.getSN();
+        byte[] cmd = new byte[]{(byte) 0x80, 0x08};
+        
+        StringBuffer secretStr = new StringBuffer(productKey);
+        secretStr.append(secret);
+        
+        byte[] secretByte = null;
+        try {
+        	secretByte = secretStr.toString().getBytes("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+        
+        byte[] body = FormatUtils.bytesConcat(cmd, secretByte);
+        
+        int size = body.length;
+        
+        byte[] _size;
+        if (size <= 0xff) {
+            _size = new byte[]{0x00, (byte) size};
+        } else {
+            _size = new byte[]{(byte) (size / 100), (byte) (size % 100)};
+        }
+        byte[] _attribute = FormatUtils.bytesConcat(
+        		FormatUtils.bytesConcat(_terminal, new byte[]{sn}), _size);
+        byte[] _message = FormatUtils.bytesConcat(_attribute, body);
+        byte xy = FormatUtils.bytesOr(_message);
+        byte[] _t1 = FormatUtils.bytesConcat(new byte[]{(byte) 0xaa}, _message); // 起始符
+        byte[] _t2 = FormatUtils.bytesConcat(_t1, new byte[]{(byte) xy}); // + 校验
+        return FormatUtils.bytesConcat(_t2, new byte[]{(byte) 0xaa}); // + 结束符
+		
+	}
 
 }

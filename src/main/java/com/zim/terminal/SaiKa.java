@@ -77,6 +77,13 @@ public class SaiKa implements Terminal {
 	public byte[] rent(String terminal,int type) {
 		return Ack8XXX.ack8010(terminal, type);
 	}
+	
+	public byte[] secret(String terminal,String productKey,String secret) {
+		if(productKey.length()!=11 || secret.length()!=32) {
+			return null;
+		}
+		return Ack8XXX.ack8011(terminal,productKey,secret);
+	}
 	public static void main(String[] args) {
 		/*Terminal terminal = new Automatic();
 		String base= "qgAAAAsSEAAAAAH+AAYAAYAMBAB5qg==";

@@ -29,6 +29,9 @@ public class Ack0001 {
 		params.setMessage_sn(message[11]);
 		params.setType(message[14]+message[15]);
 		switch (message[17]) {
+			case 0x06:
+				params.setAckType("HEART");
+            
 			case 0x08:
 	            params.setAckType("UPGRADEDEVICE");
 	            break;
@@ -59,6 +62,9 @@ public class Ack0001 {
 	        case 0x10:
 	            // 长租
 	        	params.setAckType("RENT");
+	        case 0x11:
+	            // 秘钥
+	        	params.setAckType("SECRET");
 	            break;
 	        default:
 	            break;
