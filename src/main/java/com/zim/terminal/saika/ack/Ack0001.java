@@ -70,7 +70,40 @@ public class Ack0001 {
 	            break;
 		}
     	params.setRequest_sn(message[18]);
-    	params.setStatus(message[19]== 0x00 ? true: false);
+    	
+    	String statusStr = FormatUtils.byteToBinStr(message[19]);
+    	
+    	//档位
+    	switch (Integer.parseInt(statusStr.substring(1, 4),2)) {
+			case 0:
+				params.setGear("E/S");
+				break;
+			case 1:
+				params.setGear("R");
+				break;
+			case 2:
+				params.setGear("N");
+				break;
+			case 3:
+				params.setGear("D");
+				break;
+			case 4:
+				params.setGear("P");
+				break;
+			default:
+				params.setGear("null");
+				break;
+		}
+    	
+    	//车速
+    	params.setSpeed(Integer.parseInt(statusStr.substring(4, 5),2));
+    	
+    	//行车灯/示宽灯，1为开，0为关
+    	params.setRunning_lights(Integer.parseInt(statusStr.substring(5, 6),2));
+    	
+    	//状态
+    	params.setStatus(Integer.parseInt(statusStr.substring(6, 8),2));
+    	
 		return params;
 	}
 

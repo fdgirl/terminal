@@ -14,9 +14,25 @@ public class AckInfo {
 	
 	private int request_sn;
 	
-	private boolean status;
+	private int status;
 	
 	private String ackType;
+	
+	 /**
+     * 行车灯/示宽灯，1为开，0为关
+     */
+    private int running_lights;
+    
+    /**
+     * 速度 KM/H
+     */
+    private int speed;
+    
+    /**
+     * 档位  节能档E; 倒档R; 空档N; 自动D档; 停车P档
+     */
+    private String gear;
+    
 	/**
 	 * @return equipment_id
 	 */
@@ -61,19 +77,6 @@ public class AckInfo {
 		this.request_sn = request_sn;
 	}
 
-	/**
-	 * @return status
-	 */
-	public boolean isStatus() {
-		return status;
-	}
-
-	/**
-	 * @param status 要设置的 status
-	 */
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
 
 	/**
 	 * @return length
@@ -115,6 +118,38 @@ public class AckInfo {
 	 */
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public int getRunning_lights() {
+		return running_lights;
+	}
+
+	public void setRunning_lights(int running_lights) {
+		this.running_lights = running_lights;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+	public String getGear() {
+		return gear;
+	}
+
+	public void setGear(String gear) {
+		this.gear = gear;
 	}
 	
 }

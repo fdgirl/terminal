@@ -98,15 +98,31 @@ public class FormatUtils {
         return Byte.parseByte(ss.substring(pattern.length() > 2 ? (pattern.length() - 2) : 0));
     }
     
+    
+    public static String byteToBinStr(byte sro){
+		StringBuilder stringBuilder = new StringBuilder();  
+		int v = sro & 0xff;
+		String hv = Integer.toBinaryString(v);
+		stringBuilder.append(hv);
+		while (stringBuilder.length() < 8) {
+			stringBuilder.insert(0, '0');	
+		}
+		return stringBuilder.toString();
+	}
+    
     public static void main(String[] args) {
-    	byte[] tid = new byte[]{(byte) 0xff, (byte) 0x0f, (byte) 0xff,
+    	/*byte[] tid = new byte[]{(byte) 0xff, (byte) 0x0f, (byte) 0xff,
                 (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff,
                 (byte) 0xff, (byte) 0xff, (byte) 0xff};
     	String aaa =  byteToHexStr(tid);
     	System.out.println(aaa);
     	byte[] bs = strToByte(aaa);
     	String bbb =  byteToHexStr(bs);
-    	System.out.println(bbb);    	
+    	System.out.println(bbb);   */ 	
+    	
+    	byte test = (byte) 0x04;
+    	String strToByte = byteToBinStr(test);
+    	System.out.println(strToByte);
 	}
     
 
