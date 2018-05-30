@@ -52,6 +52,7 @@ public class Gps0004 {
 		params.setReturn_car_status(FormatUtils.getBinIndex(message[23],2));
 		params.setReady_status(FormatUtils.getBinIndex(message[23],3));
 		params.setLong_term_lease(FormatUtils.getBinIndex(message[23],4));
+		params.setControl_lock(FormatUtils.getBinIndex(message[23],5));
 		
 		params.setDoor(FormatUtils.getBinIndex(message[24], 0));
 		params.setPositioning_validity(FormatUtils.getBinIndex(message[24], 1));
