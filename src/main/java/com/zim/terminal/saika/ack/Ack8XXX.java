@@ -314,7 +314,9 @@ public class Ack8XXX {
 		case 2:
 			body = new byte[]{(byte) 0x80, 0x10,0x02};
 			break;
-
+		case 9:
+			body = new byte[]{(byte) 0x80, 0x10,0x09};
+			break;
 		default:
 			body = new byte[]{(byte) 0x80, 0x10,0x00};
 			break;
