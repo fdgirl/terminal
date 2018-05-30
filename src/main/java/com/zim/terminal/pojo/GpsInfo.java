@@ -130,14 +130,12 @@ public class GpsInfo {
      * 0 为分时用车， 1 为长租用车
      */
     private int long_term_lease;
+  
     /**
-     * 报警标志4，预留
+     * 控车锁状态 1为锁定 0 为未锁定
      */
-    private int alarm_status_4;
-    /**
-     * 报警标志5，预留
-     */
-    private int alarm_status_5;
+    private int control_lock;
+    
     /**
      * 报警标志6，预留
      */
@@ -561,6 +559,12 @@ public class GpsInfo {
 	 */
 	public void setGprs_signal(int gprs_signal) {
 		this.gprs_signal = gprs_signal;
+	}
+	public int getControl_lock() {
+		return control_lock;
+	}
+	public void setControl_lock(int control_lock) {
+		this.control_lock = control_lock;
 	}
 
 
