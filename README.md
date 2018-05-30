@@ -56,7 +56,7 @@
 	
 	长租类型
 	@terminal设备ID
-	@int 租赁类型
+	@int  type 租赁类型 0无效 1为分时用车 2为长租用车 9为永久锁定  
 	public byte[] rent(String terminal,int type);
 	
 	设置IOT String productKey,String DeviceSecret
