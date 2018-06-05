@@ -346,7 +346,7 @@ public class Ack8XXX {
         }
         byte[] _terminal = FormatUtils.strToByte(tsb.toString());
         byte sn = FormatUtils.getSN();
-        byte[] cmd = new byte[]{(byte) 0x80, 0x08};
+        byte[] cmd = new byte[]{(byte) 0x80, 0x11};
         
         StringBuffer secretStr = new StringBuffer(productKey);
         secretStr.append(secret);
