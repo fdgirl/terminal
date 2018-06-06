@@ -137,54 +137,6 @@ public class GpsInfo {
     private int control_lock;
     
     /**
-     * 报警标志6，预留
-     */
-    private int alarm_status_6;
-    /**
-     * 报警标志7，预留
-     */
-    private int alarm_status_7;
-    /**
-     * 报警标志8，预留
-     */
-    private int alarm_status_8;
-    /**
-     * 报警标志9，预留
-     */
-    private int alarm_status_9;
-    /**
-     * 报警标志10，预留
-     */
-    private int alarm_status_a;
-    /**
-     * 报警标志11，预留
-     */
-    private int alarm_status_b;
-    /**
-     * 报警标志12，预留
-     */
-    private int alarm_status_c;
-    /**
-     * 报警标志13，预留
-     */
-    private int alarm_status_d;
-    /**
-     * 报警标志14，预留
-     */
-    private int alarm_status_e;
-    /**
-     * 报警标志15，预留
-     */
-    private int alarm_status_f;
-    /**
-     * 接收数据时间，单位：毫秒
-     */
-    private long accept_time;
-    /**
-     * 最后定位时间
-     */
-    private long gps_time;
-    /**
      * ACC状态：1为AccOn 0为AccOff
      */
     private int acc_status;
@@ -566,6 +518,24 @@ public class GpsInfo {
 	public void setControl_lock(int control_lock) {
 		this.control_lock = control_lock;
 	}
+    public int getNetwork_status() {
+        return network_status;
+    }
+    public void setNetwork_status(int network_status) {
+        this.network_status = network_status;
+    }
+    public int getPower_model() {
+        return power_model;
+    }
+    public void setPower_model(int power_model) {
+        this.power_model = power_model;
+    }
+    public int getLaunch_status() {
+        return launch_status;
+    }
+    public void setLaunch_status(int launch_status) {
+        this.launch_status = launch_status;
+    }
 
 
    

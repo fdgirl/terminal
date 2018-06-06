@@ -73,6 +73,9 @@ public class Ack0001 {
     	
     	String statusStr = FormatUtils.byteToBinStr(message[19]);
     	
+    	//导航屏/仪表亮
+    	params.setDash_board(Integer.parseInt(statusStr.substring(0, 1),2));
+    	
     	//档位
     	switch (Integer.parseInt(statusStr.substring(1, 4),2)) {
 			case 0:

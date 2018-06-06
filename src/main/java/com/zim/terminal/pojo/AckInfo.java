@@ -18,7 +18,12 @@ public class AckInfo {
 	
 	private String ackType;
 	
-	 /**
+	/**
+     * 导航屏/仪表亮 1为开，0为关
+     */
+    private int dash_board;
+	 
+	/**
      * 行车灯/示宽灯，1为开，0为关
      */
     private int running_lights;
@@ -151,5 +156,13 @@ public class AckInfo {
 	public void setGear(String gear) {
 		this.gear = gear;
 	}
+
+    public int getDash_board() {
+        return dash_board;
+    }
+
+    public void setDash_board(int dash_board) {
+        this.dash_board = dash_board;
+    }
 	
 }
