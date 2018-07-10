@@ -110,20 +110,4 @@ public class FormatUtils {
 		return stringBuilder.toString();
 	}
     
-    public static void main(String[] args) {
-    	/*byte[] tid = new byte[]{(byte) 0xff, (byte) 0x0f, (byte) 0xff,
-                (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff,
-                (byte) 0xff, (byte) 0xff, (byte) 0xff};
-    	String aaa =  byteToHexStr(tid);
-    	System.out.println(aaa);
-    	byte[] bs = strToByte(aaa);
-    	String bbb =  byteToHexStr(bs);
-    	System.out.println(bbb);   */ 	
-    	
-    	byte test = (byte) 0x04;
-    	String strToByte = byteToBinStr(test);
-    	System.out.println(strToByte);
-	}
-    
-
 }

@@ -85,44 +85,5 @@ public class SaiKa implements Terminal {
 		}
 		return Ack8XXX.ack8011(terminal,productKey,secret);
 	}
-	public static void main(String[] args) {
-		/*Terminal terminal = new Automatic();
-		byte[] analysis = terminal.secret("0000000B121171118001", "a1idNzoUyCt", "GaSmuC8f06GM4Sc5MzovEGaG05DSjUkb");
-		System.out.println(FormatUtils.byteToHexStr(analysis));*/
-		
-		/*Terminal terminal = new Automatic();
-		String base= "qgAAAAsSEAAAAAH+AAYAAYAMBAB5qg==";
-    	byte[] analysis = null;
-		analysis = decoder.decode(base);
-//    	analysis = FormatUtils.strToByte("AA0000000B121171118001B60019000300FF01010203040512062415305511604000003332000005AA");
-		Analysis<Object> res = terminal.anlysis(analysis);
-		System.out.println(res.getType());
-		AckInfo ackInfo = (AckInfo) res.getData();
-		System.out.println(ackInfo.getGear());*/
-//		Photo data = (Photo) res.getData();
-//		System.out.println(data);
-//		System.err.println(data.getBis());
-//		GpsInfo data = (GpsInfo) res.getData();
-//		System.out.println(data.getObd_stagus());
-//		Photo data = (Photo) res.getData();
-//		System.out.println(data.getSize());
-		/*Map<String, Object> res = terminal.anlysis();
-		System.out.println(res);
-		String string = terminal.photo("120000");
-		System.out.println(string);*/
-//		AckInfo ackInfo = (AckInfo) res.getData();
-//		System.out.println(ackInfo.isStatus());
-	}
-
-
-
-
-
-
-
-
-
-
-
 	
 }

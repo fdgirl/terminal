@@ -317,6 +317,30 @@ public class Ack8XXX {
 		case 9:
 			body = new byte[]{(byte) 0x80, 0x10,0x09};
 			break;
+		case 81:
+		    body = new byte[]{(byte) 0x80, 0x10,(byte) 0x81};
+		    break;
+		case 82:
+		    body = new byte[]{(byte) 0x80, 0x10,(byte) 0x82};
+            break;
+		case 83:
+            body = new byte[]{(byte) 0x80, 0x10,(byte) 0x83};
+            break;
+        case 84:
+            body = new byte[]{(byte) 0x80, 0x10,(byte) 0x84};
+            break;
+        case 85:
+            body = new byte[]{(byte) 0x80, 0x10,(byte) 0x85};
+            break;
+        case 86:
+            body = new byte[]{(byte) 0x80, 0x10,(byte) 0x86};
+            break;
+        case 87:
+            body = new byte[]{(byte) 0x80, 0x10,(byte) 0x87};
+            break;
+        case 88:
+            body = new byte[]{(byte) 0x80, 0x10,(byte) 0x88};
+            break;
 		default:
 			body = new byte[]{(byte) 0x80, 0x10,0x00};
 			break;
